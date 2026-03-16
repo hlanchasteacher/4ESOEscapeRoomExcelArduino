@@ -25,7 +25,7 @@
   --ra:#6366f1;--ra-l:#818cf8;--ra-bg:rgba(99,102,241,0.08);--ra-border:rgba(99,102,241,0.28);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;overflow:hidden;}
+html,body{height:100%;overflow:hidden;background:#f0eeff;}
 
 body{
   background:#f0eeff;
@@ -40,8 +40,8 @@ body{
 }
 
 
-/* animated floating orbs */
-body::before{
+/* animated floating orbs — rendered inside each active screen, not on body */
+.screen.active::before{
   content:'';
   position:fixed;inset:0;
   background:
@@ -60,7 +60,16 @@ body::before{
 }
 
 .screen{display:none;position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;z-index:10;}
-.screen.active{display:block;}
+.screen.active{
+  display:block;
+  z-index:20;
+  background-color:#f0eeff;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(167,139,250,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(125,211,252,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(249,168,212,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 75% 10%, rgba(167,243,208,0.18) 0%, transparent 50%);
+}
 
 /* ══════════════════════════════
    INTRO SCREEN
